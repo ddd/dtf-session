@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.name          = "dtf-session"
   gem.require_paths = ["lib"]
   gem.version       = Dtf::Session::VERSION
-  gem.required_ruby_version = '>= 1.9.3'
+  gem.required_ruby_version = '>= 1.9.2'
 
   gem.add_dependency("dtf")
   gem.add_dependency("rake")
