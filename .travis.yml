@@ -1,15 +1,21 @@
 language: ruby
 rvm:
-  - 1.9.2
   - 1.9.3
   - rbx-19mode
-  - jruby-19mode
+before_install:
+  - gem update bundler
+before_script:
+  - RAILS_ENV='development' bundle exec rake db:migrate
+  - RAILS_ENV='development' bundle exec gem list
 script: 'gem build dtf-session.gemspec'
 notifications:
   irc:
     channels:
       - "irc.freenode.org#dtf-gems"
+    on_failure: always
+    on_success: always
   email:
     recipients:
-      - me@deryldoucette.com
-    on_failure: all
+      - me@daviddwdowney.com
+    on_failure: always
+    on_success: always
