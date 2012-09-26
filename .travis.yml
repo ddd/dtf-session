@@ -11,7 +11,7 @@ script: 'gem build dtf-session.gemspec'
 notifications:
   irc:
     channels:
-      - "irc.freenode.org#dtf-gems"
+      - "irc.freenode.org#pgpkeys"
     on_failure: always
     on_success: always
   email:
