@@ -6,7 +6,7 @@ before_install:
   - gem update bundler
 before_script:
   - RAILS_ENV='development' bundle exec gem list
-script: 'gem build dtf-session.gemspec'
+script: RAILS_ENV='production' gem build dtf-session.gemspec
 notifications:
   irc:
     channels:
