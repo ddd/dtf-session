@@ -22,7 +22,7 @@ There are several ways to install, and configure the 'dtf-session' gem.
 1) You would run ```gem install dtf-session```, and once installed, run ```rake dtf:install``` to
 install the DTF baseline thor task(s).
 
-2) You would include the gem in your project's Gemfile and ```bundle install``. Once installed,
+2) You would include the gem in your project's Gemfile and ```bundle install```. Once installed,
 you would then run ```rake dtf:install``` to install the DTF baseline thor task(s).
 
 In both instances, you would continue on with the following instructions.
