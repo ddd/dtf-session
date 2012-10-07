@@ -18,6 +18,7 @@ group :development, :test do
   gem "pry-theme"
   gem 'simplecov'
   gem 'database_cleaner'
+  gem 'travis-lint'
 end
 
 group :test do
