@@ -2,7 +2,6 @@
 require 'cover_me'
 require 'dtf'
 require 'rspec'
-require 'turnip'
 require 'fabrication'
 require 'database_cleaner'
 
@@ -15,9 +14,6 @@ end
 Dir.glob("spec/steps/**/*steps.rb") do |f|
   load f, true
 end
-
-# This links RSpec and Turnip for the models
-RSpec.configure { |c| c.include ModelSteps }
 
 # This config section is for DatabaseCleaner
 RSpec.configure do |config|
