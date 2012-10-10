@@ -1,6 +1,6 @@
 # encoding: UTF-8
 require 'cover_me'
-require 'dtf'
+require 'dtf-session'
 require 'rspec'
 require 'fabrication'
 require 'database_cleaner'
