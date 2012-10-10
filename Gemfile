@@ -19,6 +19,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'travis-lint'
+  gem 'rspec-formatter-webkit'
 end
 
 group :test do
