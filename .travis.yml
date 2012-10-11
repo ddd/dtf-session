@@ -7,8 +7,8 @@ before_script:
   - RAILS_ENV='development' bundle exec gem list
   - RAILS_ENV='development' bundle exec rake dtf:install
   - RAILS_ENV='development' bundle exec thor dtf_setup:install
-  - RAILS_ENV='development' bundle exec rake db:setup
-  - RAILS_ENV='development' bundle exec rake db:test:prepare
+  - RAILS_ENV='development' bundle exec rake db:setup --trace
+  - RAILS_ENV='development' bundle exec rake db:test:prepare --trace
 script: RAILS_ENV='development' bundle exec rspec spec --profile
 after_script: RAILS_ENV='production' gem build dtf-session.gemspec
 notifications:
