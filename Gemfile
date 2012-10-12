@@ -26,4 +26,6 @@ group :test do
   gem 'cover_me'
 end
 
+gem 'rake'
+
 gemspec
