@@ -16,12 +16,18 @@ require 'thor'
 ENV['RAILS_ENV'] ||= 'development'
 
 # Load the db config and create a connectoid. Make an ivar so its shared throughout the application
-@dbconfig = YAML::load(File.open(File.join(File.dirname(__FILE__), '../../db/config.yml')))[ENV['RAILS_ENV']]
+if ENV['RAILS_ENV'] == 'test' then
+  ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: ':memory:'
+  puts "NOTICE: Loading db schema to IN-MEMORY SQLite3 db"
+  load "#{File.join(File.dirname(__FILE__), '../../db/schema.rb')}"
+else
+  @dbconfig = YAML::load(File.open(File.join(File.dirname(__FILE__), '../../db/config.yml')))[ENV['RAILS_ENV']]
+  # Establish the database connection
+  puts "NOTICE: Loading db schema to ON-DISK SQLite3 db"
+  ActiveRecord::Base.establish_connection(@dbconfig) # Line that actually connects the db.
+end
 
-# Establish the database connection
-ActiveRecord::Base.establish_connection(@dbconfig) # Line that actually connects the db.
-
-# Load all the models
+4# Load all the models
 Dir["#{File.join(File.dirname(__FILE__), '../../app/models/*.rb')}"].each do |model|
   load "#{model}"
 end
