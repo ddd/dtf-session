@@ -7,6 +7,8 @@ matrix:
     - rvm: 1.9.2
 before_install:
   - gem update bundler
+install:
+  - RAILS_ENV='test' bundle install
 before_script:
   - RAILS_ENV='test' bundle exec gem list
   - RAILS_ENV='test' bundle exec rake dtf:install

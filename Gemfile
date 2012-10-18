@@ -20,7 +20,7 @@ group :development do
   gem 'rspec-formatter-webkit'
 end
 
-group :development, :test do
+group :test do
   gem 'cover_me'
   gem 'database_cleaner'
   gem 'simplecov'
