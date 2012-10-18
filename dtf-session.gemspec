@@ -25,6 +25,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "json_pure"
 
   gem.add_development_dependency("rspec")       # For testing
+  gem.add_development_dependency("rspec-given")       # For testing
   gem.add_development_dependency("fabrication") # For generating objects for testing
   gem.add_development_dependency "yard"         # For generating documentation
   gem.add_development_dependency "redcarpet"    # For generating YARD docs
