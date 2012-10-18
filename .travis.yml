@@ -14,6 +14,8 @@ branches:
     - stable
 before_install:
   - gem update bundler
+install:
+  - bundle install --without development
 before_script:
   - bundle exec gem list
   - bundle exec rake dtf:install
