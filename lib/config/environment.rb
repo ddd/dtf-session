@@ -27,7 +27,7 @@ else
   ActiveRecord::Base.establish_connection(@dbconfig) # Line that actually connects the db.
 end
 
-4# Load all the models
+# Load all the models
 Dir["#{File.join(File.dirname(__FILE__), '../../app/models/*.rb')}"].each do |model|
   load "#{model}"
 end
