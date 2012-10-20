@@ -31,13 +31,5 @@ describe Dtf::Session do
 
   end
 
-  context "Contained Classes" do
-
-    it "should contain Environment class" do
-      Dtf::Session.constants.include?(:Environment)
-    end
-
-  end
-
 end
 
