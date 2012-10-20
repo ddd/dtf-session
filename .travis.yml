@@ -25,7 +25,7 @@ after_script: RAILS_ENV='production' gem build dtf-session.gemspec
 notifications:
   irc:
     channels:
-        - "irc.freenode.org#pgpkeys"
+        - "irc.freenode.org#dtf-gems"
     on_failure: always
     on_success: always
   email:
