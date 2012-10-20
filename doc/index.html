@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.3
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><p><a href="https://travis-ci.org/dtf-gems/dtf-session"><img src="https://travis-ci.org/dtf-gems/dtf-session.png" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/dtf-gems/dtf-session"><img src="https://codeclimate.com/badge.png" alt="Code Climate"></a></p>
+
+<h1>Deryls Testing Framework</h1>
+
+<p>DTF is designed to be a modular framework for testing everything from shell scripts, to Ruby, to Rails apps.</p>
+
+<p>DTF is an umbrella which is designed to incorporate multiple sub-gems, each of which provides additional
+functionality to DTF. DTF is the master skeleton within which all other dtf-* gems integrate.</p>
+
+<h2>Internal architecture</h2>
+
+<p>DTF is designed in such a way that, with the master skeleton in place, one has only to load additional plugins
+from any available DTF extension gem to add additional functionality. This can be anything ranging from
+additional languages such as Ruby, Python, C, C++, etc, to testing methods and methodologies.</p>
+
+<h2>DTF-Session Gem</h2>
+
+<p>&#39;dtf-session&#39; gem is part of the DTF <dtf-gems.deryldoucette.com> framework, and is designed for
+  Bash shell command-line based testing.</p>
+
+<h2>Installation</h2>
+
+<p>There are several ways to install, and configure the &#39;dtf-session&#39; gem.</p>
+
+<p>1) You would run <code>gem install dtf-session</code>, and once installed, run <code>rake dtf:install</code> to
+install the DTF baseline thor task(s).</p>
+
+<p>2) You would include the gem in your project&#39;s Gemfile and <code>bundle install</code>. Once installed,
+you would then run <code>rake dtf:install</code> to install the DTF baseline thor task(s).</p>
+
+<p>In both instances, you would continue on with the following instructions.</p>
+
+<p>DTF uses Thor for setup and configuration, and has 3 possible sub-tasks under task name &#39;dtf_setup&#39;:</p>
+
+<pre class="code sh"><code>∴ thor list
+dtf_setup
+---------
+thor dtf_setup:config [NAME]  # Copy db configuration file(s)
+thor dtf_setup:install        # Installs database migrations, the main schema, and configuration files
+</code></pre>
+
+<p>As you can see, you can copy just the db config files, and/or the migrations, and main schema.</p>
+
+<pre class="code sh"><code>∴ thor help dtf_setup
+Tasks:
+  thor dtf_setup:config [NAME]  # Copy db configuration file(s)
+  thor dtf_setup:help [TASK]    # Describe available tasks or one specific task
+  thor dtf_setup:install        # Installs database migrations, the main schema, and configuration files
+</code></pre>
+
+<p>To see how to install everything you would run the following command:</p>
+
+<pre class="code sh"><code>∴ thor dtf_setup:help install
+Usage:
+  thor dtf_setup:install
+
+Options:
+  [--force]  
+
+Installs database migrations, the main schema, and configuration files
+</code></pre>
+
+<p>To see how to install just the configuration files for accessing the database(s), you would run:</p>
+
+<pre class="code sh"><code>∴ thor dtf_setup:help config
+Usage:
+  thor dtf_setup:config [NAME]
+
+Options:
+  [--force]  
+
+Copy db configuration file(s)
+</code></pre>
+
+<p>Once the configuration files and/or database migrations are in place, the remaining setup is handled by &#39;rake&#39;.
+To see all possible commands, you would run &#39;rake -T&#39;, and pick the one(s) you need.</p>
+
+<pre class="code sh"><code>∴ rake -T
+rake build              # Build dtf-0.2.2.gem into the pkg directory
+rake db:create          # Create the database from config/database.yml for the current Rails.env (use db:create:all to create all dbs i...
+rake db:drop            # Drops the database for the current Rails.env (use db:drop:all to drop all databases)
+rake db:fixtures:load   # Load fixtures into the current environment's database.
+rake db:migrate         # Migrate the database (options: VERSION=x, VERBOSE=false).
+rake db:migrate:status  # Display status of migrations
+rake db:new_migration   # Create a new migration
+rake db:rollback        # Rolls the schema back to the previous version (specify steps w/ STEP=n).
+rake db:schema:dump     # Create a db/schema.rb file that can be portably used against any DB supported by AR
+rake db:schema:load     # Load a schema.rb file into the database
+rake db:seed            # Load the seed data from db/seeds.rb
+rake db:setup           # Create the database, load the schema, and initialize with the seed data (use db:reset to also drop the db first)
+rake db:structure:dump  # Dump the database structure to db/structure.sql. Specify another file with DB_STRUCTURE=db/my_structure.sql
+rake db:version         # Retrieves the current schema version number
+rake install            # Build and install dtf-0.2.2.gem into system gems
+rake release            # Create tag v0.2.2 and build and push dtf-0.2.2.gem to Rubygems
+</code></pre>
+
+<h2>Usage</h2>
+
+<p>Once you have finished configuring your database(s) and applying all migrations, you are now ready to work with
+DTF directly. The following is a summary of all current possible commands, and their expected options/parameters:</p>
+
+<p>** STILL TO BE WRITTEN ***</p>
+
+<h2></h2>
+
+<p>Enjoy!</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Fri Oct 19 23:31:41 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.3 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
