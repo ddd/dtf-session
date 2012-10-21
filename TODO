@@ -1,0 +1,47 @@
+require 'dtf-session'
+
+# Create and populate a user
+@user = User.create(name: "Test User",
+                    email_address: "me@example.com",
+                    user_name: "testuser"
+                   )
+
+@vs = @user.verification_suites.create(name: "My Test VS",
+                                       description: "Testing VS")
+
+@ac = @vs.analysis_cases.create(name: "My Test AC",
+                                description: "Testing AC")
+
+@ct = @ac.case_tests.create(cmd = "ls -alh",
+                            description = "Get full directory listing")
+
+# Set up a testing environment for use with the suites
+@env = Dtf::Session::Environment.new
+
+# Set a bash shell
+@env.test_shell = ::Session::Bash.new
+
+# Capture the starting environment @env.test_shell has as a Hash
+# See available keys via: @env.start_env.keys
+# See environment values via: @env.start_env.values || @env.start_env[:KEYNAME]
+@env.start_env = @env.set_start_env(@env.test_shell)
+
+# Set debugging of the soon-to-be-executed command on
+@env.test_shell.debug = true
+
+# Execute the command wanted
+@env.test_shell.execute(@ct.cmd)
+
+# Capture the final environment for any changes as a Hash
+# See @env.start_env for environment key and value access instructions
+@env.stop_env = @env.set_stop_env(@env.test_shell)
+
+# Save everything down the chain
+@vs.save
+
+# See what the exit status was
+@env.test_shell.status
+
+# TODO: Stack additional commands under @ac.case_tests
+# TODO: Figure out what combinations of status data we want to capture for cmd
+
