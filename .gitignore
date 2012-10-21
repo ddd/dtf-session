@@ -1,3 +1,4 @@
+/app/models/*.rb
 .project
 *~
 .config
@@ -6,7 +7,7 @@ pmip/**/*
 *.log
 pkg
 .yardoc
-dtf-session.sublime-workspace
+dtf.sublime-workspace
 _yardoc
 tmp
 Thumbs.db

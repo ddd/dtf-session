@@ -28,7 +28,12 @@ else
 end
 
 # Load all the models
-Dir["#{File.join(File.dirname(__FILE__), '../../app/models/*.rb')}"].each do |model|
-  load "#{model}"
+if Dir["#{File.join(File.dirname(__FILE__), '../../app/models')}"].empty?
+  $stderr.puts "You forgot to run the Thor DtfSetup task! No models found! Aborting!"
+  abort()
+else
+  Dir["#{File.join(File.dirname(__FILE__), '../../app/models/*.rb')}"].each do |model|
+    load "#{model}"
+  end
 end
 
