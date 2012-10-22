@@ -18,6 +18,7 @@ group :development do
   gem "pry-theme"
   gem 'travis-lint'
   gem 'rspec-formatter-webkit'
+  gem 'autotest'
 end
 
 group :test do
